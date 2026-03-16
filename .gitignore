@@ -1,0 +1,12 @@
+# 忽略图片输出目录
+answers_cache
+answers_system
+imgs/H-VLI_images.zip
+imgs/*/*
+!imgs/*/.gitkeep
+__pycache__
+.vscode
+
+
+# 忽略环境变量文件
+.env
