@@ -1,13 +1,8 @@
 # More Than Sum of Its Parts: Deciphering Intent Shifts in Multimodal Hate Speech Detection
 
-[![Paper](https://img.shields.io/badge/Paper-ACL2026-blue)]()
-
-<p align="justify">
-  <b>Abstract:</b> <font color="grey">Combating hate speech on social media is critical for securing cyberspace, yet relies heavily on the efficacy of automated detection systems. As content formats evolve, hate speech is transitioning from solely plain text to complex multimodal expressions, making implicit attacks harder to spot. Current systems, however, often falter on these subtle cases, as they struggle with multimodal content where the emergent meaning transcends the aggregation of individual modalities. To bridge this gap, we move beyond binary classification to characterize semantic intent shifts where modalities interact to construct implicit hate from benign cues or neutralize toxicity through semantic inversion. Guided by this fine-grained formulation, we curate the Hate via Vision-Language Interplay (H-VLI) benchmark where the true intent hinges on the intricate interplay of modalities rather than overt visual or textual slurs. To effectively decipher these complex cues, we further propose the Asymmetric Reasoning via Courtroom Agent DEbate (ARCADE) framework. By simulating a judicial process where agents actively argue for accusation and defense, ARCADE forces the model to scrutinize deep semantic cues before reaching a verdict. Extensive experiments demonstrate that ARCADE significantly outperforms state-of-the-art baselines on H-VLI, particularly for challenging implicit cases, while maintaining competitive performance on established benchmarks. Our code and data will be released.</font>
-</p>
+[![Paper](https://img.shields.io/badge/Paper-arXiv-red)]()
 
 This repository contains the official implementation of **ARCADE**, a hierarchical courtroom debate system designed for multimodal hate speech detection. It scrutinizes the complex interplay between text and images to uncover implicit hateful intents.
-
 
 ---
 
@@ -46,29 +41,40 @@ H-VLI categorizes samples into three difficulty levels based on the **Stratified
   <em>Figure 3: Statistical breakdown of the H-VLI dataset.</em>
 </p>
 
-<p align="center">
-  <img src="assets/dataset_comparison.jpg" width="80%" />
-  <br>
-  <em>Figure 4: Comparison of H-VLI with existing multimodal hate speech datasets.</em>
-</p>
+---
 
-<p align="center">
-  <img src="assets/showcases.jpg" width="60%" />
-  <br>
-  <em>Figure 5: Representative samples from H-VLI showcasing various interaction patterns.</em>
-</p>
+## 3. Dataset Preparation
+
+### Download Images
+To run the experiments, please download the images for the respective datasets and place them in the following directory structure:
+
+1.  **FHM Images**: Download from [Kaggle](https://www.kaggle.com/datasets/parthplc/facebook-hateful-meme-dataset).
+2.  **MMHS150K Images**: Download from the [official site](https://gombru.github.io/2019/10/09/MMHS/).
+3.  **H-VLI Images**: Download from [Google Drive](https://drive.google.com/file/d/1HdAck-PB9PW8BTTHhizylPODVqCxtoEF/view?usp=drive_link).
+
+### Directory Structure
+Organize the downloaded images as follows:
+```text
+imgs/
+├── FHM/                 # .jpg files from Facebook Hateful Meme
+├── MMHS150K/            # .jpg files from MMHS150K
+└── H-VLI_images/        # .jpg files from H-VLI
+```
 
 ---
 
-## 3. File Structure
+## 4. File Structure
+- `data/`: Directory containing dataset splits (`train_set.json`, `test_set.json`) and all sample metadata including tweet text and labels.
+- `imgs/`: Directory containing source images for FHM, MMHS150K, and H-VLI.
 - `main.py`: Main entry point for data sampling, concurrent scheduling, and evaluation.
 - `court_system.py`: Core system logic implementing the ARCADE hierarchical routing.
 - `court_prompts.py`: Agent prompt templates for the multi-class categorization task.
 - `court_prompts_binary.py`: Agent prompt templates for the binary detection task.
 - `llm_client.py`: API client supporting official direct connections and provider-based fallbacks.
 - `evaluator.py`: Logic for calculating Accuracy, Macro-F1, and other performance metrics.
+- `utils.py`: Utility functions for data loading, sampling, image encoding, and file operations.
 
-## 4. Environment Setup
+## 5. Environment Setup
 
 1. **Install Dependencies**:
    ```bash
@@ -83,7 +89,7 @@ H-VLI categorizes samples into three difficulty levels based on the **Stratified
 2. **Auto-Fallback**: If official keys are missing, the system automatically attempts to use alternative providers (e.g., `API_YI_API_KEY`).
 3. **Key Polling**: For DashScope (Qwen), GLM, and API_YI, you can configure multiple keys (e.g., `KEY_1, KEY_2`) to balance rate limits.
 
-## 5. Experimental Guide
+## 6. Experimental Guide
 
 ### Basic Commands
 
@@ -106,7 +112,7 @@ python main.py --run_mode none --samples 100 --class_mode binary
 | `--rounds` | Integer | `3` | Number of debate rounds for the implicit detection track. |
 | `--seed` | Integer | `2024` | Random seed for data sampling. |
 
-## 6. Results Output
+## 7. Results Output
 - Results are stored in `answers_system/{class_mode}/{run_mode}/{timestamp}/{model}/`.
 - `results_{model}.json`: Detailed inference logs for every sample.
 - `report.txt`: Summary report including global metrics and difficulty-wise performance.
