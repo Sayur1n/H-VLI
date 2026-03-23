@@ -30,15 +30,30 @@ We introduce the **H-VLI (Hate via Vision-Language Interplay)** benchmark, speci
   <em>Figure 2: The construction pipeline of the H-VLI dataset, combining real-world sampling with generative injection.</em>
 </p>
 
-H-VLI categorizes samples into three difficulty levels based on the **Stratified Multimodal Interaction (SMI)** paradigm:
+### Annotation and Difficulty Stratification
+To capture the complexity of multimodal hate, particularly when modalities conflict, we introduce the **Stratified Multimodal Interaction (SMI)** paradigm. For each sample, we annotate a **five-tuple**, explicitly labeling unimodal sentiments alongside the final multimodal annotation: 
+
+$$ \mathcal{A}_i = (y_i^{\text{text}}, e_i^{\text{text}}, y_i^{\text{image}}, e_i^{\text{image}}, y_i^{\text{combined}}) $$
+
+where $y_i^{\text{text/image}}$, $e_i^{\text{text/image}}$ denote the unimodal labels and explanations respectively. $y_i^{\text{combined}}$ represents the final multimodal ground-truth label.
+
+**Taxonomy of Multimodal Interaction:** 
+Under the SMI paradigm, the interplay between unimodal signals ($y^{\text{text}}, y^{\text{image}}$) and the combined outcome ($y^{\text{combined}}$) yields eight distinct interaction patterns (i.e., all $2^3$ combinations of $(y^{\text{text}}, y^{\text{image}}, y^{\text{combined}}) \in \{0,1\}^3$). Based on the reasoning complexity required to resolve these interactions, we categorize them into three difficulty levels:
+
+<p align="center">
+  <img src="assets/showcases.jpg" width="60%" />
+  <br>
+  <em>Figure 3: Showcase of different interaction patterns in H-VLI.</em>
+</p>
+
 - **Easy**: Explicit consistency between modalities.
-- **Normal**: Contextual correction where one modality neutralizes the toxicity of another.
-- **Hard**: Implicit interactions where hatefulness emerges only from the intersection of benign modalities.
+- **Normal**: Contextual correction where one modality neutralizes the toxicity of another (e.g., Implicit Inversion).
+- **Hard**: Implicit interactions where hatefulness emerges only from the intersection of benign modalities (e.g., Implicit Hate).
 
 <p align="center">
   <img src="assets/dataset_distribution.jpg" width="60%" />
   <br>
-  <em>Figure 3: Statistical breakdown of the H-VLI dataset.</em>
+  <em>Figure 4: Statistical breakdown of the H-VLI dataset.</em>
 </p>
 
 ---
