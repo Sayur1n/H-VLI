@@ -1,6 +1,6 @@
 # More Than Sum of Its Parts: Deciphering Intent Shifts in Multimodal Hate Speech Detection
 
-[![Paper](https://img.shields.io/badge/Paper-arXiv-red)]()
+[![Paper](https://img.shields.io/badge/Paper-arXiv-red)](https://arxiv.org/abs/2603.21298)
 
 This repository contains the official implementation of **ARCADE**, a hierarchical courtroom debate system designed for multimodal hate speech detection. It scrutinizes the complex interplay between text and images to uncover implicit hateful intents.
 
@@ -141,5 +141,10 @@ The H-VLI dataset is released under the [CC BY 4.0](https://creativecommons.org/
 If you find our work helpful, please cite us:
 
 ```bibtex
-
+@article{sun2026sumpartsdecipheringintent,
+  title={More Than Sum of Its Parts: Deciphering Intent Shifts in Multimodal Hate Speech Detection},
+  author={Runze Sun and Yu Zheng and Zexuan Xiong and Zhongjin Qu and Lei Chen and Jiwen Lu and Jie Zhou},
+  journal={arXiv preprint arXiv:2603.21298},
+  year={2026} 
+}
 ```
