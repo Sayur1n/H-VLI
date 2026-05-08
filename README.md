@@ -7,7 +7,6 @@ This repository introduces **H-VLI (Hate via Vision-Language Interplay)**, a ben
 ---
 
 ## 🚩 News
-- **[2026-04-06]**: Our paper has been accepted by **ACL 2026 Findings**! 🎉
 
 ---
 
