@@ -185,7 +185,7 @@ If you find our work helpful, please cite us:
 ```bibtex
 @article{sun2026sumpartsdecipheringintent,
   title={More Than Sum of Its Parts: Deciphering Intent Shifts in Multimodal Hate Speech Detection},
-  author={Runze Sun and Yu Zheng and Zexuan Xiong and Zhongjin Qu and Lei Chen and Jiwen Lu and Jie Zhou},
+  author={Runze Sun and Yu Zheng and Zexuan Xiong and Zhongjin Qu and Lei Chen and Jie Zhou and Jiwen Lu},
   journal={arXiv preprint arXiv:2603.21298},
   year={2026} 
 }
